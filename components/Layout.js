@@ -4,9 +4,14 @@ import Footer from './Footer';
 export default function Layout({children}) {
   return (
     <>
-      <Navbar />
+      <Navbar menuItems={menuItems}/>
       {children}
-      <Footer />
+      <Footer/>
     </>
   );
 }
+
+const menuItems = [
+  {text: 'Settings', link: '/settings'},
+  {text: 'Test', link: '/'}
+];

@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import { useState } from 'react';
+import MenuItem from './MenuItem';
 
-export default function Navbar() {
+export default function Navbar({menuItems}) {
   const [menuVisible, setMenuVisible] = useState(true);
 
   function toggleMenu() {
@@ -24,18 +26,20 @@ export default function Navbar() {
   }
 
   function renderMenu() {
-    return (
-      <div className="bg-yellow-400 w-full md:w-min mt-4 md:mt-0" hidden={!menuVisible}>
-        Menu
-      </div>
+    if (menuVisible) {
+      return (
+        <div className="flex flex-col md:flex-row md:items-center w-full md:w-min mt-4 md:mt-0">
+          {menuItems.map((menuItem, i) => <MenuItem key={i} information={menuItem} />)}
+        </div>
       )
+    }
   }
 
   return (
     <nav className="flex flex-col md:flex-row bg-blue-500 justify-between md:h-14 p-2">
       <div className="flex flex-row justify-between items-center">
-        <div>
-          LOGO
+        <div className="cursor-pointer">
+          <Link href="/">LOGO</Link>
         </div>
         <div className="md:hidden" onClick={toggleMenu}>
           {renderHamburgerOrClose()}
