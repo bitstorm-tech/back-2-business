@@ -28,8 +28,10 @@ export default function Navbar({menuItems}) {
   function renderMenu() {
     if (menuVisible) {
       return (
-        <div className="flex flex-col md:flex-row md:items-center w-full md:w-min mt-4 md:mt-0">
-          {menuItems.map((menuItem, i) => <MenuItem key={i} information={menuItem} />)}
+        <div className="flex flex-col md:flex-row items-center w-full md:w-min mt-4 md:mt-0">
+          {menuItems.map((menuItem, i) =>
+            <div className="mt-4 md:mt-0" key={i}><MenuItem information={menuItem} /></div>)
+          }
         </div>
       )
     }
