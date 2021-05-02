@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-export default function MenuItem({information}) {
+export default function MenuItem({menuEntry}) {
   return(
-    <div className="md:hover:bg-gray-400 cursor-pointer">
-      <Link href={information.link}>{information.text}</Link>
+    <div className="hover:bg-gray-400 cursor-pointer">
+      <Link href={menuEntry.link}>{menuEntry.text}</Link>
     </div>
   )
 }
