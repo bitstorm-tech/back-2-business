@@ -61,7 +61,7 @@ export default function Navbar({menuItems}) {
     <nav className="flex flex-col md:flex-row bg-blue-500 justify-between md:h-14 p-2">
       <div className="flex flex-row justify-between items-center">
         <div className="cursor-pointer" onClick={closeMobileMenu}>
-          <Link href="/">LOGO</Link>
+          <Link href="/">Back 2 Business</Link>
         </div>
         <div className="md:hidden" onClick={toggleMobileMenu}>
           {renderHamburgerOrClose()}
