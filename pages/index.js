@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Home() {
   return (
@@ -9,4 +10,12 @@ export default function Home() {
       </Head>
     </div>
   );
+}
+
+export async function getStaticProps({locale}) {
+  return {
+    props: {
+      ...await serverSideTranslations(locale)
+    }
+  };
 }
