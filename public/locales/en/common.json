@@ -3,5 +3,6 @@
     "settings": "Settings"
   },
   "sign-in": "Sing In",
-  "sign-up": "Sing Up"
+  "sign-up": "Sing Up",
+  "logout": "Logout"
 }

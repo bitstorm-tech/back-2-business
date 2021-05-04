@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import MenuItem from './MenuItem';
-import ButtonPrimary from './ui/ButtonPrimary';
 import { useTranslation } from 'next-i18next';
 import HamburgerSymbol from './ui/HamburgerSymbol';
 import CloseSymbol from './ui/CloseSymbol';
+import { useUser } from '@auth0/nextjs-auth0';
+import ButtonLink from './ui/ButtonLink';
 
 export default function Navbar({menuItems}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
   const {t} = useTranslation('common');
+  const {user} = useUser();
 
   function toggleMobileMenu() {
     setMobileMenuVisible(!mobileMenuVisible);
@@ -19,15 +21,14 @@ export default function Navbar({menuItems}) {
   }
 
   function renderSingInSingUpButtons() {
-    return (
-      <>
-        <div className="mx-2">
-          <ButtonPrimary props={{text: t('sign-up')}}/>
-        </div>
-        <div className="mx-2">
-          <ButtonPrimary props={{text: t('sign-in')}}/>
-        </div>
-      </>
+    return user ? (
+      <div className="mx-2">
+        <ButtonLink href="/api/auth/logout">{t('logout')}</ButtonLink>
+      </div>
+    ) : (
+      <div className="mx-2">
+        <ButtonLink href="/api/auth/login">{t('sign-in')}</ButtonLink>
+      </div>
     );
   }
 

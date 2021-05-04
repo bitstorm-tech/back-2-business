@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-export default function Settings() {
+function Settings() {
   return (
     <>
       <Head>
@@ -11,6 +12,8 @@ export default function Settings() {
     </>
   )
 }
+
+export default withPageAuthRequired(Settings);
 
 export async function getStaticProps({locale}) {
   return {
