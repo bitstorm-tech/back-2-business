@@ -1,5 +1,7 @@
 {
   "navbar": {
     "settings": "Settings"
-  }
+  },
+  "sign-in": "Sing In",
+  "sign-up": "Sing Up"
 }

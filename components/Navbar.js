@@ -1,9 +1,14 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import MenuItem from './MenuItem';
+import ButtonPrimary from './ui/ButtonPrimary';
+import { useTranslation } from 'next-i18next';
+import HamburgerSymbol from './ui/HamburgerSymbol';
+import CloseSymbol from './ui/CloseSymbol';
 
 export default function Navbar({menuItems}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+  const {t} = useTranslation('common');
 
   function toggleMobileMenu() {
     setMobileMenuVisible(!mobileMenuVisible);
@@ -13,22 +18,17 @@ export default function Navbar({menuItems}) {
     setMobileMenuVisible(false);
   }
 
-  function renderHamburgerOrClose() {
-    if (mobileMenuVisible) {
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24"
-             stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      );
-    } else {
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24"
-             stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      );
-    }
+  function renderSingInSingUpButtons() {
+    return (
+      <>
+        <div className="mx-2">
+          <ButtonPrimary props={{text: t('sign-up')}}/>
+        </div>
+        <div className="mx-2">
+          <ButtonPrimary props={{text: t('sign-in')}}/>
+        </div>
+      </>
+    );
   }
 
   function renderMobileMenu() {
@@ -49,10 +49,11 @@ export default function Navbar({menuItems}) {
     return (
       <div className="hidden md:flex flex-row items-center w-min">
         {menuItems.map((menuItem, i) =>
-          <div className="mt-4 md:mt-0" key={i}>
+          <div className="mx-2 w-max" key={i}>
             <MenuItem menuEntry={menuItem}/>
           </div>)
         }
+        {renderSingInSingUpButtons()}
       </div>
     );
   }
@@ -64,7 +65,7 @@ export default function Navbar({menuItems}) {
           <Link href="/">Back 2 Business</Link>
         </div>
         <div className="md:hidden" onClick={toggleMobileMenu}>
-          {renderHamburgerOrClose()}
+          {mobileMenuVisible ? <CloseSymbol/> : <HamburgerSymbol/>}
         </div>
       </div>
       {renderDesktopMenu()}
