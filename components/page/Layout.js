@@ -1,4 +1,4 @@
-import Navbar from './nav/Navbar';
+import Navbar from '../nav/Navbar';
 import Footer from './Footer';
 import { useTranslation } from 'next-i18next';
 
