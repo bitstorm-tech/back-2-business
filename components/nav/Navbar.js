@@ -54,7 +54,7 @@ export default function Navbar({menuItems}) {
       <div className="hidden sm:flex flex-row items-center w-min">
         {menuItems.map((menuItem, i) =>
           <div className="mx-2 w-max" key={i}>
-            <NavbarItem menuEntry={menuItem}/>
+            <NavbarItem visible={!!user} menuEntry={menuItem}/>
           </div>)
         }
         {renderAuthButtons()}
