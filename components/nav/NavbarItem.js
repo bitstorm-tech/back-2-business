@@ -1,9 +1,11 @@
 import Link from 'next/link';
 
 export default function NavbarItem({menuEntry}) {
-  return(
-    <div className="hover:text-white cursor-pointer">
-      <Link href={menuEntry.link}>{menuEntry.text}</Link>
-    </div>
-  )
+  return (
+    <Link href={menuEntry.link}>
+      <div className="hover:text-white cursor-pointer">
+        {menuEntry.text}
+      </div>
+    </Link>
+  );
 }
