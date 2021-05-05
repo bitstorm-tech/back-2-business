@@ -63,7 +63,7 @@ export default function Navbar({menuItems}) {
   }
 
   return (
-    <nav className="flex flex-col sm:flex-row bg-blue-500 justify-between sm:h-14 p-2">
+    <nav className="flex flex-col sm:flex-row bg-blue-400 justify-between sm:h-14 p-2">
       <div className="flex flex-row justify-between items-center">
         <div className="cursor-pointer" onClick={closeMobileMenu}>
           <Link href="/">Back 2 Business</Link>
