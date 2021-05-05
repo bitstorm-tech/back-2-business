@@ -35,7 +35,7 @@ export default function Navbar({menuItems}) {
   function renderMobileMenu() {
     if (mobileMenuVisible) {
       return (
-        <div className="flex flex-col items-center w-full mt-4 md:hidden">
+        <div className="flex flex-col items-center w-full mt-4 sm:hidden">
           {menuItems.map((menuItem, i) =>
             <div className="mt-4" key={i} onClick={closeMobileMenu}>
               <NavbarItem menuEntry={menuItem}/>
@@ -51,7 +51,7 @@ export default function Navbar({menuItems}) {
 
   function renderDesktopMenu() {
     return (
-      <div className="hidden md:flex flex-row items-center w-min">
+      <div className="hidden sm:flex flex-row items-center w-min">
         {menuItems.map((menuItem, i) =>
           <div className="mx-2 w-max" key={i}>
             <NavbarItem menuEntry={menuItem}/>
@@ -63,12 +63,12 @@ export default function Navbar({menuItems}) {
   }
 
   return (
-    <nav className="flex flex-col md:flex-row bg-blue-500 justify-between md:h-14 p-2">
+    <nav className="flex flex-col sm:flex-row bg-blue-500 justify-between sm:h-14 p-2">
       <div className="flex flex-row justify-between items-center">
         <div className="cursor-pointer" onClick={closeMobileMenu}>
           <Link href="/">Back 2 Business</Link>
         </div>
-        <div className="md:hidden" onClick={toggleMobileMenu}>
+        <div className="sm:hidden" onClick={toggleMobileMenu}>
           {mobileMenuVisible ? <CloseSymbol/> : <HamburgerSymbol/>}
         </div>
       </div>
