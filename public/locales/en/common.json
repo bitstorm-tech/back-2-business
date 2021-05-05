@@ -1,6 +1,7 @@
 {
   "navbar": {
-    "settings": "Settings"
+    "account": "Account",
+    "guardians": "Guardians of Time"
   },
   "sign-in": "Sing in <> Sign up",
   "sign-up": "Sing up",

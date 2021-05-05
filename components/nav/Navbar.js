@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import MenuItem from './MenuItem';
+import NavbarItem from './NavbarItem';
 import { useTranslation } from 'next-i18next';
-import HamburgerSymbol from './ui/HamburgerSymbol';
-import CloseSymbol from './ui/CloseSymbol';
+import HamburgerSymbol from '../ui/HamburgerSymbol';
+import CloseSymbol from '../ui/CloseSymbol';
 import { useUser } from '@auth0/nextjs-auth0';
-import ButtonLink from './ui/ButtonLink';
+import ButtonLink from '../ui/ButtonLink';
 
 export default function Navbar({menuItems}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
@@ -38,7 +38,7 @@ export default function Navbar({menuItems}) {
         <div className="flex flex-col items-center w-full mt-4 md:hidden">
           {menuItems.map((menuItem, i) =>
             <div className="mt-4" key={i} onClick={closeMobileMenu}>
-              <MenuItem menuEntry={menuItem}/>
+              <NavbarItem menuEntry={menuItem}/>
             </div>)
           }
           <div className="mt-10">
@@ -54,7 +54,7 @@ export default function Navbar({menuItems}) {
       <div className="hidden md:flex flex-row items-center w-min">
         {menuItems.map((menuItem, i) =>
           <div className="mx-2 w-max" key={i}>
-            <MenuItem menuEntry={menuItem}/>
+            <NavbarItem menuEntry={menuItem}/>
           </div>)
         }
         {renderAuthButtons()}

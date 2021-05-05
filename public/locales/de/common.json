@@ -1,5 +1,6 @@
 {
   "navbar": {
-    "settings": "Einstellungen"
+    "account": "Account",
+    "guardians": "Zeitwächter"
   }
 }
