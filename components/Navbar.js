@@ -20,7 +20,7 @@ export default function Navbar({menuItems}) {
     setMobileMenuVisible(false);
   }
 
-  function renderSingInSingUpButtons() {
+  function renderAuthButtons() {
     return user ? (
       <div className="mx-2">
         <ButtonLink href="/api/auth/logout">{t('logout')}</ButtonLink>
@@ -41,6 +41,9 @@ export default function Navbar({menuItems}) {
               <MenuItem menuEntry={menuItem}/>
             </div>)
           }
+          <div className="mt-10">
+            {renderAuthButtons()}
+          </div>
         </div>
       );
     }
@@ -54,7 +57,7 @@ export default function Navbar({menuItems}) {
             <MenuItem menuEntry={menuItem}/>
           </div>)
         }
-        {renderSingInSingUpButtons()}
+        {renderAuthButtons()}
       </div>
     );
   }

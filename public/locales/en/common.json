@@ -2,7 +2,7 @@
   "navbar": {
     "settings": "Settings"
   },
-  "sign-in": "Sing In",
-  "sign-up": "Sing Up",
+  "sign-in": "Sing in <> Sign up",
+  "sign-up": "Sing up",
   "logout": "Logout"
 }
