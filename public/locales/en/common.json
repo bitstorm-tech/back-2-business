@@ -1,7 +1,8 @@
 {
   "navbar": {
     "account": "Account",
-    "guardians": "Guardians of Time"
+    "guardians": "Guardians of Time",
+    "roadmap": "Roadmap"
   },
   "sign-in": "Sing in <> Sign up",
   "sign-up": "Sing up",

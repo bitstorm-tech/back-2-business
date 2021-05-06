@@ -54,7 +54,7 @@ export default function Navbar({menuItems}) {
       <div className="hidden sm:flex flex-row items-center w-min">
         {menuItems.map((menuItem, i) =>
           <div className="mx-2 w-max" key={i}>
-            <NavbarItem visible={!!user} menuEntry={menuItem}/>
+            <NavbarItem menuEntry={menuItem}/>
           </div>)
         }
         {renderAuthButtons()}
@@ -63,7 +63,7 @@ export default function Navbar({menuItems}) {
   }
 
   return (
-    <nav className="flex flex-col sm:flex-row bg-blue-400 justify-between sm:h-14 p-2 sticky top-0">
+    <nav className="flex flex-col sm:flex-row bg-blue-400 justify-between sm:h-14 p-2 top-0">
       <div className="flex flex-row justify-between items-center">
         <div className="cursor-pointer" onClick={closeMobileMenu}>
           <Link href="/">Back 2 Business</Link>

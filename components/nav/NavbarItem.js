@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-export default function NavbarItem({menuEntry, visible}) {
-  if (!visible) {
+export default function NavbarItem({menuEntry}) {
+  if (!menuEntry.visible) {
     return '';
   }
 
