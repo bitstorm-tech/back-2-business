@@ -3,7 +3,7 @@ import Input from '../../ui/Input';
 
 export default function PersonalInformationTab() {
   return (
-    <div className="bg-gray-50 h-full">
+    <div className="h-full">
       <div className="p-10">
         <Card>
           <div className="flex flex-row justify-between space-x-4">
