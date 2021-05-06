@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 import HamburgerSymbol from '../ui/HamburgerSymbol';
 import CloseSymbol from '../ui/CloseSymbol';
 import { useUser } from '@auth0/nextjs-auth0';
-import ButtonLink from '../ui/ButtonLink';
+import ButtonPrimary from '../ui/ButtonPrimary'
 
 export default function Navbar({menuItems}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
@@ -23,11 +23,11 @@ export default function Navbar({menuItems}) {
   function renderAuthButtons() {
     return user ? (
       <div className="mx-2">
-        <ButtonLink href="/api/auth/logout">{t('logout')}</ButtonLink>
+        <ButtonPrimary href="/api/auth/logout">{t('logout')}</ButtonPrimary>
       </div>
     ) : (
       <div className="mx-2">
-        <ButtonLink href="/api/auth/login">{t('sign-in')}</ButtonLink>
+        <ButtonPrimary href="/api/auth/login">{t('sign-in')}</ButtonPrimary>
       </div>
     );
   }
@@ -63,7 +63,7 @@ export default function Navbar({menuItems}) {
   }
 
   return (
-    <nav className="flex flex-col sm:flex-row bg-blue-400 justify-between sm:h-14 p-2">
+    <nav className="flex flex-col sm:flex-row bg-blue-400 justify-between sm:h-14 p-2 sticky top-0">
       <div className="flex flex-row justify-between items-center">
         <div className="cursor-pointer" onClick={closeMobileMenu}>
           <Link href="/">Back 2 Business</Link>
