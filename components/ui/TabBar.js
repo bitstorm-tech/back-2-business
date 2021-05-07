@@ -18,9 +18,7 @@ export default function TabBar({children}) {
             </button>)}
         </nav>
       </div>
-      <div className="h-full">
-        {children && children[activeTabId]}
-      </div>
+      {children && children[activeTabId]}
     </>
   );
 }
