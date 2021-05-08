@@ -6,5 +6,6 @@
   },
   "sign-in": "Sing in <> Sign up",
   "sign-up": "Sing up",
-  "logout": "Logout"
+  "logout": "Logout",
+  "delete": "Delete"
 }

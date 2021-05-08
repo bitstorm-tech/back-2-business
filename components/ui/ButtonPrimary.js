@@ -1,11 +1,12 @@
 import Link from 'next/link';
 
-export default function ButtonPrimary({children, href}) {
+export default function ButtonPrimary({children, href, onClick}) {
   function renderDiv() {
     return (
-      <div className="rounded hover:bg-green-300 bg-green-400 w-max py-1 px-3 cursor-pointer text-white rounded-full">
+      <button onClick={onClick}
+           className="rounded hover:bg-green-300 bg-green-400 w-max py-1 px-3 cursor-pointer text-white rounded-full focus:outline-none">
         {children}
-      </div>
+      </button>
     )
   }
 
