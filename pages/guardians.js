@@ -1,6 +1,6 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import ButtonPrimary from '../components/ui/ButtonPrimary';
+import PrimaryButton from '../components/ui/buttons/PrimaryButton';
 import { useTranslation } from 'next-i18next';
 import Guardian from '../components/page/guardians/Guardian';
 import { useState } from 'react';
@@ -21,8 +21,8 @@ function Guardians() {
   return (
     <div className="m-5">
       <div className="flex flex-row justify-center space-x-4">
-        <ButtonPrimary onClick={addGuardian}>{t('create-new-guardian')}</ButtonPrimary>
-        <ButtonPrimary>{t('invite-existing-guardian')}</ButtonPrimary>
+        <PrimaryButton onClick={addGuardian}>{t('create-new-guardian')}</PrimaryButton>
+        <PrimaryButton>{t('invite-existing-guardian')}</PrimaryButton>
       </div>
       <div className="flex flex-row space-x-4 justify-center flex-wrap mt-2">
         {guardians.map((guardian, i) => <Guardian key={i} name={i} onDelete={deleteGuardian}/>)}

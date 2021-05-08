@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 
-export default function ButtonDelete({onDelete}) {
+export default function DeleteButton({onDelete}) {
   const {t} = useTranslation('common');
   const [confirmation, setConfirmation] = useState(false);
 

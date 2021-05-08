@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 import HamburgerSymbol from '../ui/HamburgerSymbol';
 import CloseSymbol from '../ui/CloseSymbol';
 import { useUser } from '@auth0/nextjs-auth0';
-import ButtonPrimary from '../ui/ButtonPrimary'
+import PrimaryButton from '../ui/buttons/PrimaryButton'
 
 export default function Navbar({menuItems}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
@@ -23,11 +23,11 @@ export default function Navbar({menuItems}) {
   function renderAuthButtons() {
     return user ? (
       <div className="mx-2">
-        <ButtonPrimary href="/api/auth/logout">{t('logout')}</ButtonPrimary>
+        <PrimaryButton href="/api/auth/logout">{t('logout')}</PrimaryButton>
       </div>
     ) : (
       <div className="mx-2">
-        <ButtonPrimary href="/api/auth/login">{t('sign-in')}</ButtonPrimary>
+        <PrimaryButton href="/api/auth/login">{t('sign-in')}</PrimaryButton>
       </div>
     );
   }

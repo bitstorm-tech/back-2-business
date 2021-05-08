@@ -1,6 +1,6 @@
-import ButtonPrimary from '../../ui/ButtonPrimary';
+import PrimaryButton from '../../ui/buttons/PrimaryButton';
 import { useState } from 'react';
-import ButtonDelete from '../../ui/ButtonDelete';
+import DeleteButton from '../../ui/buttons/DeleteButton';
 
 export default function Guardian({name, onDelete, key, editable = false}) {
   const [isEditable] = useState(editable);
@@ -9,8 +9,8 @@ export default function Guardian({name, onDelete, key, editable = false}) {
       <p className="text-xl font-semibold mb-2">{name}</p>
       <div className="mb-2">Content</div>
       <div className="pt-4 w-full flex flex-row-reverse">
-        <ButtonDelete onDelete={() => onDelete(key)} />
-        <ButtonPrimary>Save</ButtonPrimary>
+        <DeleteButton onDelete={() => onDelete(key)} />
+        <PrimaryButton>Save</PrimaryButton>
       </div>
     </div>
   )

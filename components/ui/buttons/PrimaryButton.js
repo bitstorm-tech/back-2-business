@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function ButtonPrimary({children, href, onClick}) {
+export default function PrimaryButton({children, href, onClick}) {
   function renderDiv() {
     return (
       <button onClick={onClick}
