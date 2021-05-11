@@ -4,7 +4,7 @@ export default function PrimaryButton({children, href, onClick}) {
   function renderDiv() {
     return (
       <button onClick={onClick}
-           className="rounded hover:bg-green-300 bg-green-400 w-max py-1 px-3 cursor-pointer text-white rounded-full focus:outline-none">
+           className="rounded hover:bg-indigo-300 bg-indigo-400 w-max py-1 px-3 cursor-pointer text-white rounded-full focus:outline-none">
         {children}
       </button>
     )
