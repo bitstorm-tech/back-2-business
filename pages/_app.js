@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '../styles/tailwind.css';
 import Layout from '../components/page/Layout';
 import { appWithTranslation } from 'next-i18next';
 import { UserProvider } from '@auth0/nextjs-auth0';
