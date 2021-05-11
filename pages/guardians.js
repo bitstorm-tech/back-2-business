@@ -4,24 +4,29 @@ import PrimaryButton from '../components/ui/buttons/PrimaryButton';
 import { useTranslation } from 'next-i18next';
 import Guardian from '../components/page/guardians/Guardian';
 import { useState } from 'react';
+import NewGuardianModal from '../components/page/guardians/NewGuardianModal';
 
 function Guardians() {
-  let counter = 1;
   const {t} = useTranslation('guardians');
   const [guardians, setGuardians] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
-  function createNewGuardian() {
-    setGuardians([...guardians, {name: `New Guardian #${counter++}`}]);
+  function addGuardian() {
+    setShowModal(true);
   }
 
   function removeGuardian(name) {
     setGuardians([...guardians.filter(guardian => guardian.name !== name)]);
   }
 
+  function closeModal() {
+    setShowModal(false);
+  }
+
   return (
     <div className="m-5">
       <div className="flex flex-row justify-center space-x-4 mb-5">
-        <PrimaryButton onClick={() => createNewGuardian()}>
+        <PrimaryButton onClick={addGuardian}>
           {t('create-new-guardian')}
         </PrimaryButton>
         <PrimaryButton>
@@ -35,6 +40,7 @@ function Guardians() {
           </div>
         )}
       </div>
+      <NewGuardianModal visible={showModal} onClose={closeModal}/>
     </div>
   );
 }
