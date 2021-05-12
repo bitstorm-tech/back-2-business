@@ -2,13 +2,16 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PrimaryButton from '../components/ui/buttons/PrimaryButton';
 import { useTranslation } from 'next-i18next';
-import Guardian from '../components/page/guardians/Guardian';
+import GuardianCard from '../components/page/guardians/GuardianCard';
 import { useState } from 'react';
 import NewGuardianModal from '../components/page/guardians/NewGuardianModal';
+import Guardian from '../backend/models/guardians';
+import connectToMongoDb from '../backend/mongodb';
+import axios from 'axios';
 
-function Guardians() {
+function Guardians({guardiansFromDb}) {
   const {t} = useTranslation('guardians');
-  const [guardians, setGuardians] = useState([]);
+  const [guardians, setGuardians] = useState(guardiansFromDb);
   const [showModal, setShowModal] = useState(false);
 
   function openModal() {
@@ -23,9 +26,11 @@ function Guardians() {
     setShowModal(false);
   }
 
-  function addGuardian(guardian) {
-    setGuardians([guardian, ...guardians]);
-    closeModal();
+  function addGuardian(newGuardian) {
+    axios.post('/api/guardians', newGuardian).then(_ => {
+      setGuardians([...guardians, newGuardian]);
+      closeModal();
+    });
   }
 
   return (
@@ -41,7 +46,7 @@ function Guardians() {
       <div className="flex flex-row space-x-4 justify-center flex-wrap">
         {guardians.map((guardian, i) =>
           <div key={i} className="m-2">
-            <Guardian name={guardian.name} onDelete={() => removeGuardian(guardian.name)}/>
+            <GuardianCard name={guardian.name} onDelete={() => removeGuardian(guardian.name)}/>
           </div>
         )}
       </div>
@@ -52,10 +57,13 @@ function Guardians() {
 
 export default withPageAuthRequired(Guardians);
 
-export async function getStaticProps({locale}) {
+export async function getServerSideProps({locale}) {
+  await connectToMongoDb();
+  const guardians = await Guardian.find();
   return {
     props: {
-      ...await serverSideTranslations(locale, ['common', 'guardians'])
+      ...await serverSideTranslations(locale, ['common', 'guardians']),
+      guardiansFromDb: JSON.parse(JSON.stringify(guardians))
     }
   };
 }

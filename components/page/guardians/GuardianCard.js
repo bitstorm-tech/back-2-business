@@ -2,7 +2,7 @@ import PrimaryButton from '../../ui/buttons/PrimaryButton';
 import { useState } from 'react';
 import DeleteButton from '../../ui/buttons/DeleteButton';
 
-export default function Guardian({name, onDelete, onSave, editable = false}) {
+export default function GuardianCard({name, onDelete, onSave, editable = false}) {
   const [isEditable] = useState(editable);
   return (
     <div className="bg-white p-6 rounded-xl shadow-xl">
