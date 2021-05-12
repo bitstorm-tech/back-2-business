@@ -11,7 +11,7 @@ function Guardians() {
   const [guardians, setGuardians] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
-  function addGuardian() {
+  function openModal() {
     setShowModal(true);
   }
 
@@ -23,10 +23,15 @@ function Guardians() {
     setShowModal(false);
   }
 
+  function addGuardian(guardian) {
+    setGuardians([guardian, ...guardians]);
+    closeModal();
+  }
+
   return (
     <div className="m-5">
       <div className="flex flex-row justify-center space-x-4 mb-5">
-        <PrimaryButton onClick={addGuardian}>
+        <PrimaryButton onClick={openModal}>
           {t('create-new-guardian')}
         </PrimaryButton>
         <PrimaryButton>
@@ -40,7 +45,7 @@ function Guardians() {
           </div>
         )}
       </div>
-      <NewGuardianModal visible={showModal} onClose={closeModal}/>
+      <NewGuardianModal visible={showModal} onClose={closeModal} onSave={addGuardian}/>
     </div>
   );
 }

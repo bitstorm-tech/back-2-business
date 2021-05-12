@@ -14,7 +14,7 @@ export default function Modal({children, visible, onClose, onSave, title}) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </div>
-        <div className="p-5">
+        <div className="p-5 bg-white">
           {children}
         </div>
         <div className="flex flex-row items-center justify-between p-5 bg-white border-t border-gray-200 rounded-bl-lg rounded-br-lg">

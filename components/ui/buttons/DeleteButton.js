@@ -11,7 +11,7 @@ export default function DeleteButton({onDelete}) {
 
   function renderConfirmationButtons() {
     return (
-      <div onClick={toggleConfirmation} className="flex flex-row space-x-2">
+      <div onClick={toggleConfirmation} className="flex flex-row">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
              stroke="currentColor" onClick={onDelete}>
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -20,7 +20,7 @@ export default function DeleteButton({onDelete}) {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
              stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
       </div>
     );
