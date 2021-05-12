@@ -18,19 +18,19 @@ function Guardians({guardiansFromDb}) {
     setShowModal(true);
   }
 
-  function removeGuardian(name) {
-    setGuardians([...guardians.filter(guardian => guardian.name !== name)]);
+  async function removeGuardian(id) {
+    await axios.delete(`/api/guardians/${id}`);
+    setGuardians([...guardians.filter(guardian => guardian._id !== id)]);
   }
 
   function closeModal() {
     setShowModal(false);
   }
 
-  function addGuardian(newGuardian) {
-    axios.post('/api/guardians', newGuardian).then(_ => {
-      setGuardians([...guardians, newGuardian]);
-      closeModal();
-    });
+  async function addGuardian(newGuardian) {
+    const response = await axios.post('/api/guardians', newGuardian);
+    setGuardians([...guardians, response.data]);
+    closeModal();
   }
 
   return (
@@ -44,9 +44,9 @@ function Guardians({guardiansFromDb}) {
         </PrimaryButton>
       </div>
       <div className="flex flex-row space-x-4 justify-center flex-wrap">
-        {guardians.map((guardian, i) =>
-          <div key={i} className="m-2">
-            <GuardianCard name={guardian.name} onDelete={() => removeGuardian(guardian.name)}/>
+        {guardians.map(guardian =>
+          <div key={guardian._id} className="m-2 w-5/12">
+            <GuardianCard name={guardian.name} onDelete={() => removeGuardian(guardian._id)}/>
           </div>
         )}
       </div>
