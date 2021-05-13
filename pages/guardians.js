@@ -45,7 +45,7 @@ function Guardians({guardiansFromDb}) {
       </div>
       <div className="flex flex-row space-x-4 justify-center flex-wrap">
         {guardians.map(guardian =>
-          <div key={guardian._id} className="m-2 w-5/12">
+          <div key={guardian._id} className="m-3 lg:w-5/12">
             <GuardianCard name={guardian.name} onDelete={() => removeGuardian(guardian._id)}/>
           </div>
         )}
