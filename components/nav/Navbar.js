@@ -1,11 +1,10 @@
-import Link from 'next/link';
 import { useState } from 'react';
 import NavbarItem from './NavbarItem';
 import { useTranslation } from 'next-i18next';
 import HamburgerSymbol from '../ui/HamburgerSymbol';
 import CloseSymbol from '../ui/CloseSymbol';
 import { useUser } from '@auth0/nextjs-auth0';
-import PrimaryButton from '../ui/buttons/PrimaryButton'
+import PrimaryButton from '../ui/buttons/PrimaryButton';
 
 export default function Navbar({menuItems}) {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
@@ -38,7 +37,9 @@ export default function Navbar({menuItems}) {
         <div className="flex flex-col items-center w-full mt-4 sm:hidden">
           {menuItems.map((menuItem, i) =>
             <div className="mt-4" key={i} onClick={closeMobileMenu}>
-              <NavbarItem menuEntry={menuItem}/>
+              <NavbarItem href={menuItem.href} visible={menuItem.visible}>
+                {menuItem.text}
+              </NavbarItem>
             </div>)
           }
           <div className="mt-10">
@@ -54,7 +55,9 @@ export default function Navbar({menuItems}) {
       <div className="hidden sm:flex flex-row items-center w-min">
         {menuItems.map((menuItem, i) =>
           <div className="mx-2 w-max" key={i}>
-            <NavbarItem menuEntry={menuItem}/>
+            <NavbarItem href={menuItem.href} visible={menuItem.visible}>
+              {menuItem.text}
+            </NavbarItem>
           </div>)
         }
         {renderAuthButtons()}
@@ -63,10 +66,10 @@ export default function Navbar({menuItems}) {
   }
 
   return (
-    <nav className="flex flex-col sm:flex-row bg-gray-50 justify-between sm:h-14 p-2 top-0 border-b">
+    <nav className="flex flex-col sm:flex-row bg-indigo-900 justify-between sm:h-14 p-2 top-0 border-b">
       <div className="flex flex-row justify-between items-center">
         <div className="cursor-pointer" onClick={closeMobileMenu}>
-          <Link href="/">Back 2 Business</Link>
+          <NavbarItem href="/">Back 2 Business</NavbarItem>
         </div>
         <div className="sm:hidden" onClick={toggleMobileMenu}>
           {mobileMenuVisible ? <CloseSymbol/> : <HamburgerSymbol/>}

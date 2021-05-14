@@ -8,15 +8,17 @@ export default function Layout({children}) {
   const {user} = useUser();
 
   const menuItems = [
-    {text: t('navbar.roadmap'), link: '/roadmap', visible: true},
-    {text: t('navbar.guardians'), link: '/guardians', visible: !!user},
-    {text: t('navbar.account'), link: '/account', visible: !!user}
+    {text: t('navbar.roadmap'), href: '/roadmap', visible: true},
+    {text: t('navbar.guardians'), href: '/guardians', visible: !!user},
+    {text: t('navbar.account'), href: '/account', visible: !!user}
   ];
 
   return (
     <>
       <Navbar menuItems={menuItems}/>
-      {children}
+      <div className="bg-indigo-900">
+        {children}
+      </div>
       <Footer/>
     </>
   );

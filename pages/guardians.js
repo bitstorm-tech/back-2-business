@@ -34,7 +34,7 @@ function Guardians({guardiansFromDb}) {
   }
 
   return (
-    <div className="m-5">
+    <div className="p-5">
       <div className="flex flex-row justify-center space-x-4 mb-5">
         <PrimaryButton onClick={openModal}>
           {t('create-new-guardian')}

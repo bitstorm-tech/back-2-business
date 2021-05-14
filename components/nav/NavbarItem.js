@@ -1,14 +1,14 @@
 import Link from 'next/link';
 
-export default function NavbarItem({menuEntry}) {
-  if (!menuEntry.visible) {
+export default function NavbarItem({children, href = '#', visible = true}) {
+  if (!visible) {
     return '';
   }
 
   return (
-    <Link href={menuEntry.link}>
-      <div className="hover:text-indigo-400 cursor-pointer">
-        {menuEntry.text}
+    <Link href={href}>
+      <div className="text-indigo-200 hover:text-red-500 cursor-pointer">
+        {children}
       </div>
     </Link>
   );
